@@ -1,0 +1,4 @@
+﻿  state_search_v2.cpp
+c:\users\kiwi\desktop\visualstudio project\state_search_v2\state_search_v2\state_search_v2.cpp(70): warning C4474: 'scanf_s' : too many arguments passed for format string
+  c:\users\kiwi\desktop\visualstudio project\state_search_v2\state_search_v2\state_search_v2.cpp(70): note: placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+  state_search_v2.vcxproj -> C:\Users\kiwi\Desktop\VisualStudio Project\state_search_v2\Debug\state_search_v2.exe
