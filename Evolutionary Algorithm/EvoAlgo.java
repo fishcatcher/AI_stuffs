@@ -5,7 +5,7 @@ public class EvoAlgo {
 		
 		System.out.println("START");
 		Chromosome eval = new Chromosome();
-		Pool pool = new Pool(50, eval);
+		Pool pool = new Pool(100, eval);
 
 		int fitness_scale = 5;
 		while (pool.getGeneration() < fitness_scale) {
@@ -14,8 +14,7 @@ public class EvoAlgo {
 		}
 		
 		pool.printBestFit();
-		System.out.println("Population is: " + pool.getPopulation());
-		
+		System.out.println("Best Fit Collection Size: " + pool.getPopulation());
 		
 		System.out.println("Evaluation Chromosome:");
 		pool.printEval();

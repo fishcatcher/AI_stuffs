@@ -51,7 +51,7 @@ public class Pool {
 			if (!flag) {
 				chromosomeList.add(c3);
 			}
-			System.out.println("Current size: " + chromosomeList.size());
+			//System.out.println("Current size: " + chromosomeList.size());
 		} while (chromosomeList.size() < population*SCALE);
 		generation++;
 		
@@ -117,14 +117,12 @@ public class Pool {
 	public void printBestFit() {
 		for (Chromosome c : chromosomeList) {
 			c.printSequence();
-
 		}
 	}
 	
 	public void printFirst() {
 		chromosomeList.get(0).printSequence();
 	}
-	
 	
 	private List<Chromosome> chromosomeList;
 	private Chromosome eval;

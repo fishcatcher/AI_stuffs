@@ -7,7 +7,7 @@ enum Gene {X, Y, Z};
 
 public class Chromosome {
 	
-	static public final int LENGTH = 100;
+	static public final int LENGTH = 50;
 	
 	public Chromosome() {
 		gene = new Gene[LENGTH];
@@ -23,11 +23,7 @@ public class Chromosome {
 		gene = gg;
 	}
 	
-	public Chromosome mutate() {
-		
-		Gene gene[] = new Gene[LENGTH];
-		System.arraycopy(this.getSequence(), 0, gene, 0, gene.length);
-			
+	public void mutate() {			
 		int r = ThreadLocalRandom.current().nextInt(gene.length/2, gene.length);
 		List<Integer> indexList = new ArrayList<>();
 		while (indexList.size() < r) {
@@ -44,9 +40,6 @@ public class Chromosome {
 			}
 			gene[i] = g;
 		}
-	
-		
-		return new Chromosome(gene);
 	}
 	
 	public Chromosome crossOver(Chromosome c) {
