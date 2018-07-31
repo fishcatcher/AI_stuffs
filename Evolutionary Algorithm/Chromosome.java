@@ -7,7 +7,7 @@ enum Gene {X, Y, Z};
 
 public class Chromosome {
 	
-	static public final int LENGTH = 50;
+	static public final int LENGTH = 100;
 	
 	public Chromosome() {
 		gene = new Gene[LENGTH];

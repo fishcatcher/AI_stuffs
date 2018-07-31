@@ -4,10 +4,9 @@ import java.util.Random;
 
 public class Pool {
 	
-	static public final int SCALE = 5;
-	static public final int FITNESS_SCALE = 10;
-	static public final int RANGE = 10;
-	static public final Random rand = new Random();
+	static private final int SCALE = 5;
+	static private final int FITNESS_SCALE = 50;
+	static private final Random rand = new Random();
 	
 	public Pool(int n) {
 		population = n;
@@ -16,9 +15,10 @@ public class Pool {
 			eval = new Chromosome();
 		}
 		chromosomeList = new ArrayList<>();
-		for (int i=0; i<population; i++) {
+		
+		while (chromosomeList.size() < population) {
 			Chromosome c = new Chromosome();
-			chromosomeList.add(c);
+			add(c);
 		}
 	}
 	
@@ -40,35 +40,19 @@ public class Pool {
 			Chromosome c2 = chromosomeList.get(n2);
 			Chromosome c3 = c1.crossOver(c2);
 			c3.mutate();
-			
-			boolean flag = false;
-			for (Chromosome c : chromosomeList) {
-				if (c3.isDuplicate(c)) {
-					flag = true;
-					break;
-				}
-			}
-			if (!flag) {
-				chromosomeList.add(c3);
-			}
+			add(c3);
 			//System.out.println("Current size: " + chromosomeList.size());
 		} while (chromosomeList.size() < population*SCALE);
-		generation++;
 		
+		generation++;
 	}
 	
 	public void evaluate() {
 		int best = -1;
-		int bestCount = 0;
 		for (Chromosome c : chromosomeList) {
 			c.setHeuristicScore(eval);
 			if (c.getHeuristicScore() > best) {
 				best = c.getHeuristicScore();
-			}
-		}
-		for (Chromosome c : chromosomeList) {
-			if (c.getHeuristicScore() == best) {
-				bestCount++;
 			}
 		}
 		
@@ -122,6 +106,20 @@ public class Pool {
 	
 	public void printFirst() {
 		chromosomeList.get(0).printSequence();
+	}
+	
+	private boolean add(Chromosome c) {
+		boolean flag = false;
+		for (Chromosome ch : chromosomeList) {
+			if (c.isDuplicate(ch)) {
+				flag = true;
+				break;
+			}
+		}
+		if (!flag) {
+			chromosomeList.add(c);
+		}
+		return flag;
 	}
 	
 	private List<Chromosome> chromosomeList;
